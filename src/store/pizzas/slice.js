@@ -31,7 +31,7 @@ const initialState = {
     },
   ],
 };
-
+// reducers that keep the actions, define how the state of your app will change
 export const pizzaSlice = createSlice({
   name: "pizzas",
   initialState,
