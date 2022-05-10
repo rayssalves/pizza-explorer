@@ -1,5 +1,5 @@
 import "./App.css";
-import PizzaList from "./components/PizzaList";
+import { PizzaList } from "./components/PizzaList/PizzaList";
 
 function App() {
   return (
