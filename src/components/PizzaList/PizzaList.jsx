@@ -1,10 +1,13 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { selectUser } from "../../store/user/selector";
 //here import the function that was created in the selector
 import { listPizza } from "../../store/pizzas/selector";
+import { toggleFavorites } from "../../store/user/slice";
 
 const PizzaList = () => {
   const user = useSelector(selectUser);
+  //here adds the dispatch 
+  const dispatch = useDispatch();
   //here I do a const pizzas that is the name that is in the slice, doing a useSelector
   const pizzas = useSelector(listPizza);
   return (
@@ -24,6 +27,10 @@ const PizzaList = () => {
           <li key={pizza.id}>
             <h4>{pizza.name}</h4>
             <p>{pizza.description}</p>
+            {/* dispatch logic that was made in the user */}
+            <button onClick={() => dispatch(toggleFavorites(pizza.id))}>
+              {user.favorites.includes(pizza.id) ? "♥" : "♡"}
+            </button>
             <span>
               Ordered: <strong>{pizza.bought}</strong> times!
             </span>
