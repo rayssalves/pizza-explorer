@@ -2,15 +2,15 @@ import "../../style.scss";
 import { useSelector, useDispatch} from "react-redux";
 import { selectUser } from "../../store/user/selector";
 //here import the function that was created in the selector
-import { listPizza } from "../../store/pizzas/selector";
 import { toggleFavorites } from "../../store/user/slice";
+import { selectPizzas } from "../../store/pizzas/selector";
 
 const PizzaList = () => {
   const user = useSelector(selectUser);
   //here adds the dispatch 
   const dispatch = useDispatch();
   //here I do a const pizzas that is the name that is in the slice, doing a useSelector
-  const pizzas = useSelector(listPizza);
+  const pizzas = useSelector(selectPizzas);
   
   return (
     <div className="pizza-list">
@@ -37,6 +37,7 @@ const PizzaList = () => {
                 user.favorites.includes(pizza.id) ? "fav" : ""
               }`}
             >
+              {/* if not return this or that */}
               {user.favorites.includes(pizza.id) ? "♥" : "♡"}
             </button>
             <div className="overlay">
